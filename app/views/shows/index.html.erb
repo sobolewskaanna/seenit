@@ -6,6 +6,6 @@
 <% end %>
 
 <% @shows.each do |show| %>
-  <%= show.title%><br>
+  <%= button_to show.title %><br>
   <%= image_tag show.image_url %><br>
 <% end %>
