@@ -1,0 +1,11 @@
+<h1>Hello</h1>
+
+<%= form_tag shows_path, {method: 'get'} do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", name: nil %>
+<% end %>
+
+<% @shows.each do |show| %>
+  <%= show.title%><br>
+  <%= image_tag show.image_url %><br>
+<% end %>
