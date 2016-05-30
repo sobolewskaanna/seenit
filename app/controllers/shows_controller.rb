@@ -25,9 +25,4 @@ class ShowsController < ApplicationController
     end
   end
 
-  def create
-    p params
-    render :index
-  end
-
 end
