@@ -6,14 +6,16 @@ class ShowsController < ApplicationController
       response = HTTParty.get('http://api.tvmaze.com/search/shows?q=' + params[:search])
       if response.success?
         @shows = []
-        response.each do |show|
-          @show = Show.new
-          @show.tvmaze_id = show['show']['id']
-          @show.title = show['show']['name']
-          if show['show']['image'] != nil
-            @show.image_url = show['show']['image']['medium']
+        response.each do |tvmaze_show|
+          tvmaze_show = tvmaze_show['show']
+          show = Show.find_or_create_by(tvmaze_id: tvmaze_show['id']) do |new_show|
+            # new_show.tvmaze_id = tvmaze_show['id']
+            new_show.title = tvmaze_show['name']
+            if tvmaze_show['image'] != nil
+              new_show.image_url = tvmaze_show['image']['medium']
+            end
           end
-          @shows << @show
+          @shows << show
         end
       else
         p 'error'
@@ -21,6 +23,11 @@ class ShowsController < ApplicationController
     else
       @shows = Show.all
     end
+  end
+
+  def create
+    p params
+    render :index
   end
 
 end
