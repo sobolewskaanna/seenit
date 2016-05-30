@@ -1,6 +1,6 @@
 
-<%= @show.first.title %><br>
-<%= image_tag @show.first.image_url %>
+<%= @show.title %><br>
+<%= image_tag @show.image_url %>
 
 <%= button_to "Add New Product", new_show_product_path, method: 'get' %><hr>
 

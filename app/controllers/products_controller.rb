@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
   def index
-    @show = Show.where(id: params[:show_id])
+    @show = Show.find(params[:show_id])
     @products = Product.where(show_id: params[:show_id])
   end
 
@@ -25,7 +25,15 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     @product.update_attributes(product_params)
-    redirect_to show_products_path(@product.show_id)
+    show_id = @product.show_id
+    redirect_to show_products_path(show_id)
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    show_id = @product.show_id
+    @product.destroy
+    redirect_to show_products_path(show_id)
   end
 
   def product_params
