@@ -6,6 +6,6 @@
 <% end %>
 
 <% @shows.each do |show| %>
-  <%= button_to show.title, shows_path(show.id) %><br>
+  <%= button_to show.title, show_products_path(show) %><br>
   <%= image_tag show.image_url %><br>
 <% end %>
