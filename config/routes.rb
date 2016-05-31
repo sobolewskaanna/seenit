@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :shows, only: [:index], shallow: true do
     resources :follows, only: [:create]
-    delete "/follows/:id", to: "follows#destroy", as: "delete_follow"
+    delete "/follows", to: "follows#destroy"
     resources :products
   end
 

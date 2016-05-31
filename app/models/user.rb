@@ -6,4 +6,20 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def following?(show)
+    Follow.where(user: self, show: show).count > 0
+  end
+
+  def follow(show)
+    unless following?(show)
+      Follow.create(user: self, show: show)
+    end
+  end
+
+  def unfollow(show)
+    if following?(show)
+      Follow.find_by(user: self, show: show).destroy
+    end
+  end
 end

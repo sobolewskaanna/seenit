@@ -11,11 +11,10 @@
   <%= button_to show.title, show_products_path(show.id), method: 'get' %><br>
   <%= image_tag show.image_url %><br>
   <% if current_user %>
-    <% if Follow.where(user: current_user, show: show).count == 0 %>
-      <%= button_to "Follow", show_follows_path(show.id) %>
+    <% if current_user.following?(show) %>
+      <%= button_to "Unfollow", show_follows_path(show.id), method: 'delete' %>
     <% else %>
-    <%= button_to "Unfollow" %>
+      <%= button_to "Follow", show_follows_path(show.id) %>
     <% end %>
   <% end %>
 <% end %>
->
