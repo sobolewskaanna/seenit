@@ -9,7 +9,19 @@
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  
+
+  <% if current_user %>
+    <li><%= link_to "Home", root_path %>
+    <li><%= link_to "Profile", user_path(current_user) %></li>
+    <li><%= link_to "Logout", destroy_user_session_path, method: 'delete' %></li>
+    <li><%= link_to 'Back', :back %></li>
+  <% else %>
+    <li><%= link_to "Home", root_path %>
+    <li><%= link_to "Sign Up", new_user_registration_path %></li>
+    <li><%= link_to "Sign In", new_user_session_path %></li>
+    <li><%= link_to 'Back', :back %></li>
+  <% end %>
+
 <%= yield %>
 
 </body>
