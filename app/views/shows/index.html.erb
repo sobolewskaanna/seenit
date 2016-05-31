@@ -5,6 +5,8 @@
   <%= submit_tag "Search", name: nil %>
 <% end %>
 
+<%= button_to "Products", products_path, method: 'get' %>
+
 <% @shows.each do |show| %>
   <%= button_to show.title, show_products_path(show.id), method: 'get' %><br>
   <%= image_tag show.image_url %><br>

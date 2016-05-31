@@ -1,11 +1,14 @@
+<% if @show != nil %>
+  <%= @show.title %><br>
+  <%= image_tag @show.image_url %>
+  <%= button_to "Add New Product", new_show_product_path, method: 'get' %><hr>
+<% end %>
 
-<%= @show.title %><br>
-<%= image_tag @show.image_url %>
-
-<%= button_to "Add New Product", new_show_product_path, method: 'get' %><hr>
 
 <% @products.each do |product| %>
   <%= product.description %><br>
+  <%= product.show.title %>
+  <%= image_tag product.show.image_url %>
   <%= button_to "Edit", edit_product_path(product), method: 'get' %>
   <%= button_to "Delete", product_path(product), method: 'delete' %><hr>
 <% end %>

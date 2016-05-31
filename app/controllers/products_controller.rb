@@ -1,8 +1,12 @@
 class ProductsController < ApplicationController
 
   def index
-    @show = Show.find(params[:show_id])
-    @products = Product.where(show_id: params[:show_id])
+    if params[:show_id]
+      @show = Show.find(params[:show_id])
+      @products = Product.where(show_id: params[:show_id])
+    else
+      @products = Product.all
+    end
   end
 
   def new
