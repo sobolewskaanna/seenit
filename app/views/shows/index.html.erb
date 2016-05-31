@@ -10,4 +10,12 @@
 <% @shows.each do |show| %>
   <%= button_to show.title, show_products_path(show.id), method: 'get' %><br>
   <%= image_tag show.image_url %><br>
+  <% if current_user %>
+    <% if Follow.where(user: current_user, show: show).count == 0 %>
+      <%= button_to "Follow", show_follows_path(show.id) %>
+    <% else %>
+    <%= button_to "Unfollow" %>
+    <% end %>
+  <% end %>
 <% end %>
+>

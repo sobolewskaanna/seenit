@@ -9,7 +9,6 @@ class ShowsController < ApplicationController
         response.each do |tvmaze_show|
           tvmaze_show = tvmaze_show['show']
           show = Show.find_or_create_by(tvmaze_id: tvmaze_show['id']) do |new_show|
-            # new_show.tvmaze_id = tvmaze_show['id']
             new_show.title = tvmaze_show['name']
             if tvmaze_show['image'] != nil
               new_show.image_url = tvmaze_show['image']['medium']
