@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Seenit</title>
+  <title>SeenIt</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
 
-  <% if current_user %>
-    <li><%= link_to "Home", root_path %>
-    <li><%= link_to "Profile", user_path(current_user) %></li>
-    <li><%= link_to "Logout", destroy_user_session_path, method: 'delete' %></li>
-    <li><%= link_to 'Back', :back %></li>
-  <% else %>
-    <li><%= link_to "Home", root_path %>
-    <li><%= link_to "Sign Up", new_user_registration_path %></li>
-    <li><%= link_to "Sign In", new_user_session_path %></li>
-    <li><%= link_to 'Back', :back %></li>
-  <% end %>
+  <nav class="navbar navbar-light bg-faded">
+    <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+      &#9776;
+    </button>
+    <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+      <a class="navbar-brand" href="#">Seen It</a>
+      <ul class="nav navbar-nav pull-xs-right">
+        <% if current_user %>
+          <li class="nav-item"><%= link_to "Profile", user_path(current_user), class:"nav-link " %></li>
+          <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: 'delete', class:"nav-link" %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path, class:"nav-link" %></li>
+          <li class="nav-item"><%= link_to "Sign In", new_user_session_path, class:"nav-link" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="row" id="user-menu">
+    <div class="container text-xs-center">
+      <ul class="nav navbar-nav">
+        <li class="nav-item active">
+          <%= link_to "Discover Products", products_path%>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "Search Products", products_path%>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "Browse Shows", products_path%>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- <p class="notice"><%= notice %></p> -->
+  <!-- <p class="alert"><%= alert %></p> -->
+
 
 <%= yield %>
 

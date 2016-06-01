@@ -2,14 +2,38 @@
   <%= @show.title %><br>
   <%= image_tag @show.image_url %>
   <%= button_to "Add New Product", new_show_product_path, method: 'get' %><hr>
+
+  <div class="card-deck-wrapper">
+    <div class="card-deck">
+      <% @products.each_slice(4) do |products| %>
+        <div class="row">
+          <% products.each do |product| %>
+            <div class="col-sm-6 col-md-3" id="movie-card">
+              <div class="card">
+                <div class="card-block text-xs-center">
+                  <%= image_tag product.image_url, class:"img-thumbnail" %><br>
+                  <%= product.description %>
+                  <% if @show == nil %>
+                    <p>Seen on:<%= link_to product.show.title, show_products_path(show.id), method: 'get', class:"card-title" %></p><br>
+                  <% end %>
+                  <%= button_to "Edit", edit_product_path(product), method: 'get' %>
+                  <%= button_to "Delete", product_path(product), method: 'delete' %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
 <% end %>
 
-
-<% @products.each do |product| %>
+<!-- <% @products.each do |product| %>
   <%= product.description %><br>
   <% if @show == nil %>
     <%= product.show.title %>
   <% end %>
   <%= button_to "Edit", edit_product_path(product), method: 'get' %>
   <%= button_to "Delete", product_path(product), method: 'delete' %><hr>
-<% end %>
+<% end %> -->

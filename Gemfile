@@ -31,6 +31,9 @@ gem 'httparty'
 
 #Use Devise
 gem 'devise'
+
+#bootstrap
+gem 'bootstrap', '~> 4.0.0.alpha3'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

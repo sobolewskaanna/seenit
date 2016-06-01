@@ -1,20 +1,34 @@
-<h1>Hello</h1>
 
-<%= form_tag shows_path, {method: 'get'} do %>
+
+
+<!-- <%= form_tag shows_path, {method: 'get'} do %>
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Search", name: nil %>
-<% end %>
+<% end %> -->
 
-<%= button_to "Products", products_path, method: 'get' %>
 
-<% @shows.each do |show| %>
-  <%= button_to show.title, show_products_path(show.id), method: 'get' %><br>
-  <%= image_tag show.image_url %><br>
-  <% if current_user %>
-    <% if current_user.following?(show) %>
-      <%= button_to "Unfollow", show_follows_path(show.id), method: 'delete' %>
-    <% else %>
-      <%= button_to "Follow", show_follows_path(show.id) %>
+<div class="card-deck-wrapper">
+  <div class="card-deck">
+    <% @shows.each_slice(4) do |shows| %>
+      <div class="row">
+        <% shows.each do |show| %>
+          <div class="col-sm-6 col-md-3" id="movie-card">
+            <div class="card">
+              <div class="card-block text-xs-center">
+                <%= image_tag show.image_url%><br>
+                <%= link_to show.title, show_products_path(show.id), method: 'get', class:"card-title" %><br>
+                <% if current_user %>
+                  <% if current_user.following?(show) %>
+                    <%= button_to "Unfollow", show_follows_path(show.id), method: 'delete', class:"btn btn-secondary-outline" %>
+                  <% else %>
+                    <%= button_to "Follow", show_follows_path(show.id), class:"btn btn-primary-outline" %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     <% end %>
-  <% end %>
-<% end %>
+  </div>
+</div>
