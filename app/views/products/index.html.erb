@@ -15,7 +15,7 @@
           Add new product
         </button>
 
-        <!-- Modal -->
+        <!-- Add product Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -55,9 +55,12 @@
             <span class="octicon octicon-pencil"></span>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button"><%= link_to "Edit", edit_product_path(product), method: 'get' %></button>
+            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#productModal">Edit</button>
             <button class="dropdown-item" type="button"><%= link_to "Delete", product_path(product), method: 'delete' %></button>
           </div>
+
+          <%= render "edit" %>
+
         </div>
         <% end %>
       </div>
