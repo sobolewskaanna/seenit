@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root 'shows#index'
+  root 'products#index'
 
   get '/products', to: "products#index", as: 'products'
   resources :users, only: [:show]

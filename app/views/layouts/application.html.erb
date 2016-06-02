@@ -14,7 +14,7 @@
       &#9776;
     </button>
     <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
-      <a class="navbar-brand" href="#"><span id="logo">Seen It</span></a>
+      <%= link_to "Seen It", root_path, id:"logo" %>
       <ul class="nav navbar-nav pull-xs-right">
         <% if current_user %>
           <li class="nav-item"><%= link_to "Profile", user_path(current_user), class:"nav-link " %></li>
