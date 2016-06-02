@@ -1,11 +1,17 @@
+<%= render "layouts/topmenu" %>
 
-
-
-<!-- <%= form_tag shows_path, {method: 'get'} do %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Search", name: nil %>
-<% end %> -->
-
+<div class="row">
+  <div class="col-sm-6 col-md-3 col-md-offset-4">
+    <div class="form-group" id="search-bar">
+      <form class="form-inline">
+        <%= form_tag shows_path, {method: 'get'} do %>
+          <%= text_field_tag :search, params[:search], class:"form-control", placeholder:'TV show' %>
+          <%= submit_tag "Search", name: nil, class:"btn btn-primary" %>
+        <% end %>
+      </form>
+    </div>
+  </div>
+</div>
 
 <div class="card-deck-wrapper">
   <div class="card-deck">

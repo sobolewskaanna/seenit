@@ -1,8 +1,13 @@
-<h1>hello</h1>
-<%= current_user.email %>
-<%= button_to "Edit Profile", edit_user_registration_path(current_user), method: 'get' %>
+<div class="container-fluid" id="profile">
+  <div class="row text-xs-pull-right">
+    <%= button_to "Edit Profile", edit_user_registration_path(current_user), method: 'get' %>
+  </div>
+  <div class="row">
+    <%= current_user.email %>
+  </div>
+</div>
 
-<% @follows.each do |follow| %>
+<!-- <% @follows.each do |follow| %>
   <%= follow.show.title %><br>
   <%= image_tag follow.show.image_url %><br>
-<% end %>
+<% end %> -->

@@ -1,39 +1,44 @@
+<%= render "layouts/topmenu" %>
+
 <% if @show != nil %>
-  <%= @show.title %><br>
-  <%= image_tag @show.image_url %>
-  <%= button_to "Add New Product", new_show_product_path, method: 'get' %><hr>
-
-  <div class="card-deck-wrapper">
-    <div class="card-deck">
-      <% @products.each_slice(4) do |products| %>
-        <div class="row">
-          <% products.each do |product| %>
-            <div class="col-sm-6 col-md-3" id="movie-card">
-              <div class="card">
-                <div class="card-block text-xs-center">
-                  <%= image_tag product.image_url, class:"img-thumbnail" %><br>
-                  <%= product.description %>
-                  <% if @show == nil %>
-                    <p>Seen on:<%= link_to product.show.title, show_products_path(show.id), method: 'get', class:"card-title" %></p><br>
-                  <% end %>
-                  <%= button_to "Edit", edit_product_path(product), method: 'get' %>
-                  <%= button_to "Delete", product_path(product), method: 'delete' %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+  <div class="row">
+    <div class="col-xs-6 text-xs-right">
+      <%= image_tag @show.image_url %>
     </div>
-  </div>
-
+    <div class="col-xs-6">
+      <h3><%= @show.title %><br></h3>
+      <span>Product count: <%= @products.count %></span></br>
+      <%= button_to "Add New Product", new_show_product_path, method: 'get' %>
+    </div>
+  </div><hr>
 <% end %>
 
-<!-- <% @products.each do |product| %>
-  <%= product.description %><br>
-  <% if @show == nil %>
-    <%= product.show.title %>
+<div id="products" class="transitions-enabled">
+  <% @products.each do |product| %>
+    <div class="box card card-default">
+      <div class="image-button">
+        <%= image_tag product.image_url, class:"img-thumbnail" %>
+        <% if current_user %>
+        <div class="dropdown">
+          <button class="btn btn-primary-outline" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="octicon octicon-pencil"></span>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item" type="button"><%= link_to "Edit", edit_product_path(product), method: 'get' %></button>
+            <button class="dropdown-item" type="button"><%= link_to "Delete", product_path(product), method: 'delete' %></button>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <div class="card-body">
+        <%= product.description %><br>
+
+        <% if @show == nil %>
+          <span id="show-on-index">Seen on: <b><%= link_to product.show.title, show_products_path(product.show_id) %></b></span><br>
+        <% end %>
+
+      </div>
+      <p class="card-text"><small class="text-muted">Posted <%= time_ago_in_words(product.created_at) %></small></p>
+    </div>
   <% end %>
-  <%= button_to "Edit", edit_product_path(product), method: 'get' %>
-  <%= button_to "Delete", product_path(product), method: 'delete' %><hr>
-<% end %> -->
+</div>

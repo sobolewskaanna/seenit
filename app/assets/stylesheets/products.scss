@@ -1,7 +1,29 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.card-block img{
-  height: 5rem;
-  width: 5rem;
+
+#products {
+  margin: 0 auto;
+}
+.box {
+  margin: 5px;
+  width: 214px;
+}
+.box img {
+  width: 100%;
+}
+#show-on-index{
+  font-size: .8rem;
+}
+.image-button {
+  position: relative;
+}
+.dropdown {
+  top: 0;
+  left: 164px;
+  position: absolute;
+}
+
+.btn-primary-outline {
+  border-color: transparent;
 }

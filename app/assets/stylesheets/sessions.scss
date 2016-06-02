@@ -1,0 +1,52 @@
+#login.container{
+  background-image: url("background2.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color:white;
+  margin: 0;
+  min-width: 100%;
+  min-height:700px;
+}
+#login{
+  padding-top: 5rem;
+}
+#login-input{
+  margin: .5rem;
+  padding: 0;
+}
+div.actions{
+  margin-right: .5rem;
+}
+#remember{
+  margin-left: .5rem;
+}
+#login-card{
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  padding: 2.5rem;
+}
+#sign-up.container{
+  background-image: url("background.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color:white;
+  margin: 0;
+  min-width: 100%;
+  min-height:700px;
+}
+#signin-card {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  padding: 2.5rem;
+  margin-top: 5rem;
+}
+#logo {
+font-family: 'Kaushan Script', cursive;
+font-size: 3.5rem;
+}
+.navbar-brand #logo {
+  font-size: 1.6rem;
+  color: white;
+}
