@@ -1,5 +1,18 @@
 <%= render "layouts/topmenu" %>
 
+<div class="row">
+  <div class="col-sm-6 col-md-3 col-md-offset-4">
+    <div class="form-group" id="search-bar">
+      <form class="form-inline">
+        <%= form_tag products_path, {method: 'get'} do %>
+          <%= text_field_tag :search, params[:search], class:"form-control", placeholder:'Little Black Dress' %>
+          <%= submit_tag "Search", name: nil, class:"btn btn-primary" %>
+        <% end %>
+      </form>
+    </div>
+  </div>
+</div>
+
 <% if @show != nil %>
   <div class="card" id="show-card">
     <div class="row">

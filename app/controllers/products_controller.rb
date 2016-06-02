@@ -2,7 +2,10 @@ class ProductsController < ApplicationController
 
   def index
     @product = Product.new
-    if params[:show_id]
+    @products = Product.all
+    if params[:search]
+      @products = Product.search(params[:search])
+    elsif params[:show_id]
       @show = Show.find(params[:show_id])
       @products = Product.where(show_id: params[:show_id])
     else
