@@ -1,13 +1,31 @@
-<div class="container-fluid" id="profile">
-  <div class="row text-xs-pull-right">
-    <%= button_to "Edit Profile", edit_user_registration_path(current_user), method: 'get' %>
-  </div>
-  <div class="row">
-    <%= current_user.email %>
+<div class="card" id="profile-card">
+  <div class="container" id="profile-info">
+    <div class="row">
+      <div class="col-xs-6 text-xs-right">
+        <span>User email: <%= current_user.email %></span>
+      </div>
+      <div class="col-xs-6">
+        <%= button_to "Edit Profile", edit_user_registration_path(current_user), method: 'get', class:"btn btn-primary" %>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- <% @follows.each do |follow| %>
-  <%= follow.show.title %><br>
-  <%= image_tag follow.show.image_url %><br>
-<% end %> -->
+<div class="card-deck-wrapper">
+  <div class="card-deck">
+    <% @follows.each_slice(4) do |follows| %>
+      <div class="row">
+        <% follows.each do |follow| %>
+          <div class="col-sm-6 col-md-3" id="movie-card">
+            <div class="card">
+              <div class="card-block text-xs-center">
+                <%= image_tag follow.show.image_url%><br>
+                <%= link_to follow.show.title, show_products_path(follow.show.id), method: 'get', class:"card-title" %><br>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
