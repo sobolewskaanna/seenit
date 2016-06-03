@@ -40,6 +40,12 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 #mansonry
 gem 'masonry-rails'
 
+#oath
+gem 'omniauth-pinterest'
+
+gem "figaro"
+
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
