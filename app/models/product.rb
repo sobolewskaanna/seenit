@@ -4,8 +4,8 @@ class Product < ActiveRecord::Base
 
   def self.search(search)
     if search
-       search.downcase!
-       where('LOWER(description) LIKE ?', "%#{search}%")
+      # Trigram Search: https://www.postgresql.org/docs/current/static/pgtrgm.html
+      where('similarity(description, ?) > 0.1', search)
     else
       all
     end
