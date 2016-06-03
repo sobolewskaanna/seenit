@@ -45,6 +45,9 @@ gem 'omniauth-pinterest'
 
 gem "figaro"
 
+# heroku
+gem 'rails_12factor', group: :production
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'
