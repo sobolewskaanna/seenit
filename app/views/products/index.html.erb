@@ -78,7 +78,7 @@
         <% end %>
       </div>
       <div class="card-body">
-        <%= product.description %><br>
+        <%= link_to product.description, "#{product.store_url}", :target => "_blank", style:"color: black" %><br>
 
         <% if @show == nil %>
           <span id="show-on-index">Seen on: <b><%= link_to product.show.title, show_products_path(product.show_id) %></b></span><br>
