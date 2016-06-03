@@ -72,7 +72,7 @@
             <button class="dropdown-item" type="button"><%= link_to "Delete", product_path(product), method: 'delete' %></button>
           </div>
 
-          <%= render "edit" %>
+          <%= render "edit", product: product %>
 
         </div>
         <% end %>
@@ -91,5 +91,5 @@
 </div>
 
 <% if @products.count == 0 %>
-  <p>There were no products posted yet.</p>
+  <p>There are no products posted yet.</p>
 <% end %>

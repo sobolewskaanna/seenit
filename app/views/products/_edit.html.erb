@@ -9,7 +9,7 @@
         <h4 class="modal-title" id="myModalLabel">Update Product</h4>
       </div>
       <div class="modal-body">
-        <%= form_for @product do |f| %>
+        <%= form_for product do |f| %>
         <%= f.text_field :description, class:"form-control" %><br>
         <%= f.text_field :image_url, class:"form-control" %><br>
         <%= f.text_field :store_url, class:"form-control" %><br>
