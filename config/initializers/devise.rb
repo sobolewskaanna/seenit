@@ -2,7 +2,11 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
 
-  OmniAuth.config.full_host = 'https://localhost:3000'
+  if ENV['RAILS_ENV'] == 'production'
+    OmniAuth.config.full_host = 'https://seenit1.herokuapp.com'
+  else
+    OmniAuth.config.full_host = 'https://localhost:3000'
+  end
 
   config.omniauth :pinterest, ENV['PINTEREST_APP_ID'], ENV['PINTEREST_APP_SECRET']
 
