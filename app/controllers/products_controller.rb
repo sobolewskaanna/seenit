@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.create(product_params)
+    @product.user_id = current_user.id
     @product.show_id = params[:show_id]
     if @product.save
       redirect_to show_products_path

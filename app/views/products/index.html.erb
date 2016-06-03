@@ -62,7 +62,8 @@
     <div class="box card card-default">
       <div class="image-button">
         <%= image_tag product.image_url, class:"img-thumbnail" %>
-        <% if current_user %>
+        <%= product.user_id %>
+        <% if current_user == product.user %>
         <div class="dropdown">
           <button class="btn btn-primary-outline" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="octicon octicon-pencil"></span>
