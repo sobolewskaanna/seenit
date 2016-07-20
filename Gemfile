@@ -34,9 +34,6 @@ gem 'httparty'
 #Use Devise
 gem 'devise'
 
-#bootstrap
-gem 'bootstrap', '~> 4.0.0.alpha3'
-
 #mansonry
 gem 'masonry-rails'
 
